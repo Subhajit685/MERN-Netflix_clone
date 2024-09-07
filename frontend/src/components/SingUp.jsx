@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuthStor } from '../store/confiSlice'
+import { Loader } from 'lucide-react'
 
 export default function SingUp() {
 
@@ -11,7 +12,7 @@ export default function SingUp() {
     const [name, setname] = useState("")
     const [password, setpassword] = useState("")
 
-    const { singup } = useAuthStor()
+    const { singup, isSigningUP } = useAuthStor()
 
     const hendelSubmit = (e) =>{
         e.preventDefault()
@@ -59,7 +60,7 @@ export default function SingUp() {
                         </div>
 
                         <button className='py-2 w-full text-white bg-red-600 font-semibold rounded-md hover:bg-red-700'>
-                            Sing Up
+                            Sing Up {isSigningUP && <Loader className='animate-spin text-white size-5 mx-3'/>}
                         </button>
 
                     </form>
