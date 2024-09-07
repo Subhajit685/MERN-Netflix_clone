@@ -12,8 +12,7 @@ export default function History() {
 
     const hendleDelete = async (id) =>{
         try {
-            const res = await axios.delete(`http://localhost:5000/search/api/v1/history/${id}`,{withCredentials: true})
-            console.log(res.data)
+            await axios.delete(`/api/search/v1/history/${id}`)
             setsearchHistory(searchHistory.filter((word) => word.id !== id));
             toast.success("Deleted successfully")
         } catch (error) {
@@ -25,7 +24,7 @@ export default function History() {
     useEffect(() => {
         const getHistory = async () => {
             try {
-                const res = await axios.get(`http://localhost:5000/search/api/v1/history`, { withCredentials: true })
+                const res = await axios.get(`/api/search/v1/history`)
                 setsearchHistory(res.data.history)
             } catch (error) {
                 console.log(error.message)
@@ -36,7 +35,6 @@ export default function History() {
     }, [])
 
 
-    console.log(searchHistory)
     return (
         <div className='bg-black to-white min-h-screen'>
         <Navbar />

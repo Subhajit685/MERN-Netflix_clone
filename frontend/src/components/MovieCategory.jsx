@@ -17,7 +17,7 @@ export default function MovieCategory({ category }) {
 
     useEffect(()=>{
         const getContent = async () =>{
-            const res = await axios.get(`http://localhost:5000/${contentType}/api/v1/${category}`, {withCredentials: true})
+            const res = await axios.get(`/api/${contentType}/v1/${category}`)
             setcontent(res.data.details.results)
         }
 

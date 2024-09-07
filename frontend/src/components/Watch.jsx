@@ -20,7 +20,7 @@ export default function Watch() {
 
     useEffect(() => {
         const getTrailer = async () => {
-            const res = await axios.get(`http://localhost:5000/${contentType}/api/v1/${id}/trailer`, { withCredentials: true })
+            const res = await axios.get(`/api/${contentType}/v1/${id}/trailer`)
             settrailer(res.data.trailer)
         }
         getTrailer()
@@ -28,7 +28,7 @@ export default function Watch() {
 
     useEffect(() => {
         const getSimilerContent = async () => {
-            const res = await axios.get(`http://localhost:5000/${contentType}/api/v1/${id}/similer`, { withCredentials: true })
+            const res = await axios.get(`/api/${contentType}/v1/${id}/similer`)
             setsimilerContent(res.data.details)
         }
 
@@ -37,7 +37,7 @@ export default function Watch() {
 
     useEffect(() => {
         const getDetiles = async () => {
-            const res = await axios.get(`http://localhost:5000/${contentType}/api/v1/${id}/details`, { withCredentials: true })
+            const res = await axios.get(`/api/${contentType}/v1/${id}/details`)
             setcontent(res.data.details)
             setloading(false)
         }
@@ -47,14 +47,12 @@ export default function Watch() {
 
 
     const hendlePre = () => {
-        console.log("click")
         if (trailerIndex > 0) {
             settrailerIndex(trailerIndex - 1)
         }
     }
 
     const hendleNext = () => {
-        console.log("click")
         if (trailerIndex < trailer.length - 1) {
             settrailerIndex(trailerIndex + 1)
         }

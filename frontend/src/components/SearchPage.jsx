@@ -22,8 +22,7 @@ export default function SearchPage() {
     const hendleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const res = await axios.get(`http://localhost:5000/search/api/v1/${activeTab}/${searchTerm}`, { withCredentials: true })
-            console.log(res.data)
+            const res = await axios.get(`/api/search/v1/${activeTab}/${searchTerm}`)
             setresults(res.data.content)
         } catch (error) {
             if (error.response.status === 404) {

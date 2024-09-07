@@ -11,7 +11,7 @@ export const useAuthStor = create((set) =>({
     singup : async (crenditial) =>{
         set({isSigningUP : true})
         try {
-            const responce = await axios.post("http://localhost:5000/auth/api/v1/singup", crenditial, {withCredentials: true})
+            const responce = await axios.post("/api/auth/v1/singup", crenditial)
             set({user : responce.data.user, isSigningUP : false})
             toast.success("Account created successfully")
         } catch (error) {
@@ -22,7 +22,7 @@ export const useAuthStor = create((set) =>({
     login : async (crenditial) =>{
         set({isLogin : true})
         try {
-            const responce = await axios.post("http://localhost:5000/auth/api/v1/login", crenditial, {withCredentials: true})
+            const responce = await axios.post("/api/auth/v1/login", crenditial)
             set({user : responce.data.user, isLogin : false})
             toast.success("Login successfully")
         } catch (error) {
@@ -33,7 +33,7 @@ export const useAuthStor = create((set) =>({
     logout : async () =>{
         set({islogout : true})
         try {
-            await axios.get("http://localhost:5000/auth/api/v1/logout", {withCredentials: true})
+            await axios.get("/api/auth/v1/logout")
             set({user : null, islogout : false})
             toast.success("Logged out successfully")
         } catch (error) {
@@ -45,7 +45,7 @@ export const useAuthStor = create((set) =>({
     checkAuth : async () =>{
         set({isAuth : true})
         try {
-            const responce = await axios.get("http://localhost:5000/auth/api/v1/check", {withCredentials: true})
+            const responce = await axios.get("/api/auth/v1/check")
             set({user : responce.data.user, isAuth : false})
         } catch (error) {
             set({user : null, isAuth : false})

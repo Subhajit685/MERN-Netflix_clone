@@ -1,6 +1,6 @@
 import express from "express"
 import path from "path"
-import cors from "cors"
+// import cors from "cors"
 
 
 import authRoute from "./route/auth.route.js"
@@ -18,22 +18,22 @@ const app = express()
 const PORT = ENV_VARS.PORT
 
 
-const allowedOrigins = [
-    'http://localhost:5173', 
-    'https://mern-netflix-clone-ezky.onrender.com'
-  ];
+// const allowedOrigins = [
+//     'http://localhost:5173', 
+//     'https://mern-netflix-clone-ezky.onrender.com'
+//   ];
   
-  app.use(cors({
-    origin: function (origin, callback) {
-      if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-        callback(null, true);
-      } else {
-        callback(new Error('Not allowed by CORS'));
-      }
-    },
-    credentials: true,
-    optionSuccessStatus: 200
-  }));
+//   app.use(cors({
+//     origin: function (origin, callback) {
+//       if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+//         callback(null, true);
+//       } else {
+//         callback(new Error('Not allowed by CORS'));
+//       }
+//     },
+//     credentials: true,
+//     optionSuccessStatus: 200
+//   }));
   
 
 
@@ -47,14 +47,13 @@ app.use(cookieParser())
 
 // use different route
 
-app.use("/auth/api/v1", authRoute)
-app.use("/movie/api/v1", protect, movieRoute)
-app.use("/tv/api/v1", protect, tvRoute)
-app.use("/search/api/v1", protect, searchRoute)
+app.use("/api/auth/v1", authRoute)
+app.use("/api/movie/v1", protect, movieRoute)
+app.use("/api/tv/v1", protect, tvRoute)
+app.use("/api/search/v1", protect, searchRoute)
 
 const __dirname = path.resolve()
 
-console.log(__dirname)
 
 if(ENV_VARS.NODE_ENV === "production"){
     app.use(express.static(path.join(__dirname, "/frontend/dist")))

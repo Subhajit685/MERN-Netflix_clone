@@ -59,7 +59,7 @@ export default function SingUp() {
                                 placeholder='********' value={password} onChange={(e)=> setpassword(e.target.value)} />
                         </div>
 
-                        <button className='py-2 w-full text-white bg-red-600 font-semibold rounded-md hover:bg-red-700'>
+                        <button className='flex justify-center items-center py-2 w-full text-white bg-red-600 font-semibold rounded-md hover:bg-red-700'>
                             Sing Up {isSigningUP && <Loader className='animate-spin text-white size-5 mx-3'/>}
                         </button>
 

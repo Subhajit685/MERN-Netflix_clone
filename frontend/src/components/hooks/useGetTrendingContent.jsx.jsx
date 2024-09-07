@@ -7,7 +7,7 @@ export default function useGetTrendingContent() {
     const [trendingContent, settrendingContent] = useState(null)
     useEffect(()=>{
         const setContent = async () =>{
-        const responce = await axios.get(`http://localhost:5000/${contentType}/api/v1/trending`, {withCredentials : true})
+        const responce = await axios.get(`/api/${contentType}/v1/trending`, {withCredentials : true})
         settrendingContent(responce.data.content)
         };
 
